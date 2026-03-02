@@ -111,8 +111,6 @@ This project is for **academic research and red-teaming purposes only**. It aims
 
 If you find this work helpful for your research, please consider citing our paper:
 
-代码段
-
 ```
 @article{liu2025midas,
   title={MIDAS: Multi-Image Dispersion and Semantic Reconstruction for Jailbreaking MLLMs},
