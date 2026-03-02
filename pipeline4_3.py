@@ -74,14 +74,6 @@ Strategic Plan:
 """
 # ==================== HARDCODED CONFIGURATION ====================
 
-
-# API Configuration
-OPENAI_API_KEY = "sk-LEzLIDl4XDbXEZnZzvXPyAtkIw3S2uJxtGnXhUQ5PZe2jmNx"
-OPENAI_API_BASE = 'https://api.nuwaapi.com/v1'
-
-# OPENAI_API_KEY = "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"
-# OPENAI_API_BASE = "https://openrouter.ai/api/v1"
-
 # 辅助model
 MODEL = "gpt-5-nano"  # Use gpt-4o-mini for all operations
 MAX_WORKERS = 9# Number of threads to use
@@ -605,78 +597,9 @@ class Pipeline4:
     
     
     #not used
-    def _robust_kyword_extraction(self, toxic_version: str, original_instruction: str) -> List[str]:
-        """Robust keyword extraction with multiple fallback strategies."""
-        print(f"  [Pipeline4] Starting robust keyword extraction...")
-        
-        # Strategy 1: Try to extract from toxic version
-        if toxic_version and not self._is_rejection(toxic_version):
-            keywords = self.extract_keywords(toxic_version)
-            if keywords:
-                print(f"  [Pipeline4] Strategy 1 successful: extracted from toxic version")
-                return keywords
-        
-        # Strategy 2: Try to extract from original instruction
-        keywords = self.extract_keywords(original_instruction)
-        if keywords:
-            print(f"  [Pipeline4] Strategy 2 successful: extracted from original instruction")
-            return keywords
-        
-        # Strategy 3: Simple keyword extraction from original
-        keywords = self._extract_simple_keywords(original_instruction)
-        if keywords:
-            print(f"  [Pipeline4] Strategy 3 successful: simple extraction from original")
-            return keywords
-        
-        # Strategy 4: Fallback to basic words
-        keywords = self._extract_basic_keywords(original_instruction)
-        print(f"  [Pipeline4] Strategy 4: using basic keywords as final fallback")
-        return keywords
-    
-
-
-    def _extract_basic_keywords(self, instruction: str) -> List[str]:
-        """Extract basic keywords as final fallback."""
-        # Extract the most important words from the instruction
-        words = instruction.lower().split()
-        
-        # Remove common words and get meaningful words
-        common_words = {'how', 'to', 'make', 'create', 'build', 'the', 'a', 'an', 'and', 'or', 'but', 'with', 'for', 'in', 'on', 'at', 'by', 'from', 'of', 'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'can', 'must', 'shall', 'what', 'where', 'when', 'why', 'which', 'who'}
-        
-        meaningful_words = [word for word in words if len(word) > 2 and word not in common_words]
-
-        # Take the first WORD_COUNT meaningful words
-        keywords = meaningful_words[:WORD_COUNT]
-
-        # If no meaningful words, use the first WORD_COUNT words
-        if not keywords:
-            keywords = words[:WORD_COUNT]
-        
-        # Keywords are used as-is without repetition
-        
-        print(f"  [Pipeline4] Basic keywords extracted: {keywords}")
-        return keywords
-    
-    def _extract_simple_keywords(self, instruction: str) -> List[str]:
-        """Simple keyword extraction as fallback."""
-        # Extract key words from the instruction
-        words = instruction.lower().split()
-        # Look for important words (longer than 3 characters, not common words)
-        common_words = {'how', 'to', 'make', 'create', 'build', 'the', 'a', 'an', 'and', 'or', 'but', 'with', 'for', 'in', 'on', 'at', 'by', 'from', 'of', 'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'can', 'must', 'shall'}
-        
-        important_words = [word for word in words if len(word) > 3 and word not in common_words]
-        
-        # Take the first 2 important words
-        keywords = important_words[:WORD_COUNT]
-        
-        # If no important words found, use the first WORD_COUNT words
-        if not keywords:
-            keywords = words[:WORD_COUNT]
-        
-        # Keywords are used as-is without repetition
-        
-        print(f"  [Pipeline4] Simple keywords extracted: {keywords}")
-        return keywords
+    def _robust_kyword_extraction(self, ...):
+    def _extract_basic_keywords(self, ...):
+    def _extract_simple_keywords(self, ...):
     
     def generate_images_for_keywords(self, keywords: List[str]) -> List[Dict[str, Any]]:
         """Generate images that encode the keywords."""
