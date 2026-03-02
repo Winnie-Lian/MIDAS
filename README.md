@@ -92,15 +92,6 @@ The following images show how toxic keywords are hidden within seemingly harmles
 
 ------
 
-## 📂 Repository Structure
-
-- `pipeline4_3.py`: Main entry point for the attack pipeline.
-- `game/`: Python scripts for generating various steganographic games (Math, Sort, etc.).
-- `benchmark/`: Dataset containing harmful behaviors (e.g., AdvBench).
-- `output/`: Storage for generated images and JSON results.
-
-------
-
 ## ⚠️ Ethical Statement
 
 This project is for **academic research and red-teaming purposes only**. It aims to identify vulnerabilities in Multimodal Large Language Models to foster the development of more robust defense mechanisms. We do not condone the use of these methods for malicious activities.
