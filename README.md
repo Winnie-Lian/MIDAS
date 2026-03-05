@@ -1,28 +1,25 @@
 # MIDAS: Multi-Image Dispersion and Semantic Reconstruction for Jailbreaking MLLMs
 
-📢 **Update (May 2025):** Our paper has been submitted to **ICLR 2026**! 🎉
+Our paper has been accepted by ICLR
 
 Check out the core implementation of the MIDAS framework in this repository.
 
-Please feel free to contact [Your Email/Author Email] if you have any questions.
+https://arxiv.org/abs/2603.00565
 
 ------
 
 ## 🟢 Overview
 
-**MIDAS** is a multimodal jailbreak framework that decomposes harmful semantics into risk-bearing subunits, disperses them across multiple visual clues (via game-based steganography), and leverages cross-image reasoning to gradually reconstruct the malicious intent, thereby bypassing existing safety guardrails in MLLMs.
+**MIDAS** is an effective multi-image jailbreak framework for MLLMs. **MIDAS** decomposes a harmful query into risk-bearing semantic subunits and disperses them across multiple visual images equipped with **Game-style Visual Reasoning (GVR)** templates (e.g., *Letter Equation*, *Jigsaw Letter*, *Navigate-and-Read*, *Rank-and-Read*, and *Odd-One-Out* puzzles). Simultaneously, the textual channel adopts a **persona-driven strategy**, where sanitized prompts with placeholders are bound to dispersed image fragments and guided by latent persona induction.
+
+By jointly enforcing **cross-image compositional reasoning** and **persona-driven textual reconstruction**, MIDAS compels the model to progressively reassemble the malicious intent. This design ensures that harmful semantics remain hidden in individual modalities but emerge coherently after structured fusion, substantially extending the reasoning chain and effectively reducing the model's reliance on **security-focused attention**. Consequently, MIDAS achieves stable and superior jailbreak performance even against strongly aligned closed-source MLLMs.
 
 <p align="center">
+- ### Key Contributions
 
-<img src="./imgs/framework.png" width=90%&gt;
-
-</p>
-
-### Key Contributions:
-
-- **Semantic Dispersion**: Breaking down a single toxic instruction into multiple benign-looking image tokens.
-- **Steganographic Puzzles**: Using math, sorting, and compass-based games to hide sensitive keywords.
-- **Automated Red-Teaming**: A complete pipeline from instruction transformation to multi-threaded evaluation.
+  - **Multi-Image Dispersion Framework**: We propose an effective jailbreak framework that distributes harmful semantics across multiple images to induce structured cross-modal reasoning while maintaining remarkable efficiency.
+  - **Twofold Reasoning Strategy**: We introduce a strategy combining **game-style visual embedding** with **persona-driven textual reconstruction**. This approach substantially extends reasoning chains and delays the exposure of harmful semantics, effectively mitigating the model's security-focused attention.
+  - **Extensive Empirical Validation**: Comprehensive experiments across diverse datasets and MLLMs demonstrate that **MIDAS** significantly outperforms state-of-the-art multimodal jailbreak methods, proving highly effective even against strongly aligned commercial models.
 
 ------
 
@@ -40,12 +37,12 @@ pip install openai tqdm requests
 
 ### 2. Configure API Keys
 
-**Crucial:** Before running, ensure you set your API key in `pipeline4_3.py` or as an environment variable (recommended).
+**Crucial:** Before running, ensure you set your API key in `pipeline.py` or as an environment variable (recommended).
 
 Python
 
 ```
-# In pipeline4_3.py
+# In pipeline.py
 OPENAI_API_KEY = "your-api-key-here"
 ```
 
@@ -56,17 +53,8 @@ Run the main pipeline to process harmful instructions and generate steganographi
 Bash
 
 ```
-python pipeline4_3.py
+python pipeline.py
 ```
-
-This script will:
-
-1. Load instructions from `benchmark/advbench/adv.json`.
-2. Generate game-based images for toxic keywords.
-3. Query the target MLLM (e.g., Gemini-1.5-Pro).
-4. Evaluate the response using the **Duo-Judge** mechanism.
-
-------
 
 ## 📊 Experiments
 
@@ -85,8 +73,7 @@ We evaluate MIDAS against leading closed-source and open-source models. The "Com
 The following images show how toxic keywords are hidden within seemingly harmless puzzles:
 
 <p align="center">
-
-<img src="./imgs/games_demo.png" width=80%&gt;
+<img src="./pipeline4_0001_captcha_0001_114.pdf" width=80%&gt;
 
 </p>
 
