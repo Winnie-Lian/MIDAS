@@ -73,7 +73,7 @@ We evaluate MIDAS against leading closed-source and open-source models. The "Com
 The following images show how toxic keywords are hidden within seemingly harmless puzzles:
 
 <p align="center">
-<img src="./pipeline4_0001_captcha_0001_114.pdf" width=80%&gt;
+<img src="./image.png" width=80%&gt;
 
 </p>
 
