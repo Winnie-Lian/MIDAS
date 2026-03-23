@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2603.00565"><img src="https://img.shields.io/badge/arXiv-2603.00565-b31b1b.svg" alt="arXiv"></a>
-  <a href="https://iclr.cc/virtual/2026/poster/XXXXX"><img src="https://img.shields.io/badge/ICLR-2026-blue.svg" alt="ICLR 2026"></a>
+  <a href="https://iclr.cc/virtual/2026/poster/10006971"><img src="https://img.shields.io/badge/ICLR-2026-blue.svg" alt="ICLR 2026"></a>
   <img src="https://img.shields.io/badge/License-RAIL--NC-blue.svg" alt="License: RAIL-NC">
 </p>
 
