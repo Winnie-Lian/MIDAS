@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Output / results
+output/
+
+# API keys / env
+.env
+
+# OS
+.DS_Store
+
+# Supplementary material (local only)
+10463_MIDAS_Multi_Image_Disper_Supplementary Material/
